@@ -16,14 +16,14 @@ const Dot = styled.div`
   background-color: ${(props) => props.active && '#797979'};
 `
 
-const ScrollIndicator = ({ target, count }) => {
-  const [scrollProgress, setScrollProgress] = useState(0)
+const ScrollIndicator = (props: { target: any; count: number }) => {
+  const [scrollProgress, setScrollProgress] = useState<number>(0)
 
   const scrollListener = () => {
-    if (!target.current) {
+    if (!props.target.current) {
       return
     }
-    const element = target.current
+    const element = props.target.current
     const windowScroll = element.scrollLeft // Vzdálenost zleva 0 doprava 100
     //scrollWidth - celková délka jako součet velikostí itemů vedle sebe
     //clientWidth - šířka display zařízení
@@ -40,15 +40,16 @@ const ScrollIndicator = ({ target, count }) => {
   }
 
   useEffect(() => {
-    target.current.addEventListener('touchmove', scrollListener)
+    props.target.current.addEventListener('touchmove', scrollListener)
     return () =>
-      target.current &&
-      target.current.removeEventListener('touchmove', scrollListener)
+      props.target.current &&
+      props.target.current.removeEventListener('touchmove', scrollListener)
   })
 
-  const renderDots = () => {
-    const selectedDotValue = (scrollProgress * count) / 100
-    return [...Array(count).keys()].map((index) => (
+  const renderDots = (): HTMLElement => {
+    const selectedDotValue = (scrollProgress * props.count) / 100
+    //@ts-ignore
+    return [...Array(props.count).keys()].map((index: number) => (
       <Dot
         key={index}
         active={selectedDotValue >= index && selectedDotValue <= index + 1}

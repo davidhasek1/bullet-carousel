@@ -1,10 +1,14 @@
 import styled from 'styled-components'
-import img2 from '../../images/turistika.jpeg'
+//@ts-ignore
+import img2 from '../../images/restaurant.jpeg'
+//@ts-ignore
 import img3 from '../../images/sauna.jpeg'
+//@ts-ignore
 import img4 from '../../images/ski-restaurant.jpeg'
+//@ts-ignore
 import img5 from '../../images/wellness.jpeg'
 
-import BulletCarousel from '../BulletCarousel'
+import BulletCarousel from '.'
 
 const Wrapper = styled.div`
   background-color: #112436;
@@ -23,7 +27,7 @@ const Example = () => {
   ]
   return (
     <Wrapper>
-      <BulletCarousel count={items.length}>
+      <BulletCarousel count={items.length} gap={0}>
         {items.map((item, i) => {
           return (
             <div key={i}>

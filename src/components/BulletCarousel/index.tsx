@@ -1,4 +1,5 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
+
 import styled from 'styled-components'
 import ScrollIndicator from './ScrollIndicator'
 
@@ -13,15 +14,19 @@ const CarouselContainer = styled.div`
     display: none;
   }
 `
-const BulletCarousel = ({ count, gap, children }) => {
+const BulletCarousel = (props: {
+  count: number
+  gap?: number
+  children: any
+}) => {
   const target = useRef()
 
   return (
     <MainWrapper>
-      <CarouselContainer ref={target} gap={gap}>
-        {children}
+      <CarouselContainer ref={target} gap={props.gap}>
+        {props.children}
       </CarouselContainer>
-      <ScrollIndicator count={count} target={target} />
+      <ScrollIndicator count={props.count} target={target} />
     </MainWrapper>
   )
 }
