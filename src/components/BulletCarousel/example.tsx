@@ -18,7 +18,7 @@ const Image = styled.img`
   height: 200px;
 `
 const Example = () => {
-  const items = [
+  const items: any[] = [
     { id: 0, img: img2 },
     { id: 1, img: img2 },
     { id: 2, img: img3 },
