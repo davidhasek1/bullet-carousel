@@ -13,6 +13,7 @@ const CarouselContainer = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
+  background-color: red;
 `
 const BulletCarousel = (props: {
   count: number

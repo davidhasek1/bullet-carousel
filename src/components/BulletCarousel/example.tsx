@@ -9,6 +9,7 @@ import img4 from '../../images/ski-restaurant.jpeg'
 import img5 from '../../images/wellness.jpeg'
 
 import BulletCarousel from '.'
+import CloningElements from '../Cloner'
 
 const Wrapper = styled.div`
   background-color: #112436;
@@ -19,7 +20,6 @@ const Image = styled.img`
 `
 const Example = () => {
   const items: any[] = [
-    { id: 0, img: img2 },
     { id: 1, img: img2 },
     { id: 2, img: img3 },
     { id: 3, img: img4 },
@@ -28,13 +28,15 @@ const Example = () => {
   return (
     <Wrapper>
       <BulletCarousel count={items.length} gap={0}>
-        {items.map((item, i) => {
-          return (
-            <div key={i}>
-              <Image src={item.img} alt={i} />
-            </div>
-          )
-        })}
+        <CloningElements>
+          {items.map((item, i) => {
+            return (
+              <div key={i}>
+                <Image src={item.img} alt={i} />
+              </div>
+            )
+          })}
+        </CloningElements>
       </BulletCarousel>
     </Wrapper>
   )
